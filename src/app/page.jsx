@@ -1,7 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
-import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { List, ListItem } from '@/components/List'
@@ -17,8 +15,10 @@ import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.sv
 import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
 import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
 import logoUnseal from '@/images/clients/unseal/logo-light.svg'
-import imageLaptop from '@/images/laptop.jpg'
-import { loadCaseStudies } from '@/lib/mdx'
+import imageMobile from '@/images/mobile.jpeg'
+import logo1 from '@/images/clients/family-fund/logomark-dark.svg'
+import logo2 from '@/images/clients/phobia/logomark-dark.svg'
+import logo3 from '@/images/clients/unseal/logomark-dark.svg'
 
 const clients = [
   ['Phobia', logoPhobiaLight],
@@ -60,26 +60,55 @@ function Clients() {
   )
 }
 
-function CaseStudies({ caseStudies }) {
+const caseStudies = [
+  {
+    client: 'Design',
+    title: 'Comunique eficácia em uma arte',
+    description:
+      'O investimento em design é fundamental para empresas, pois proporciona diferenciação no mercado, fortalece a identidade da marca, melhora a experiência do cliente, comunica eficazmente valores e mensagens, aumenta a confiança dos consumidores e valoriza os produtos ou serviços oferecidos. Resumindo, o design não apenas embeleza, mas impulsiona o sucesso e a competitividade empresarial.',
+    logo: logo1,
+  },
+
+  {
+    client: 'Trafego Pago',
+    title: 'Alcance resultados mais rápido',
+    description:
+      'Investir em tráfego pago oferece resultados rápidos e mensuráveis, controle sobre o orçamento e segmentação precisa, escalabilidade e potencial de retorno sobre o investimento significativo, tornando-se uma estratégia eficaz para aumentar a visibilidade, o engajamento e as vendas de uma empresa.',
+    logo: logo2,
+  },
+
+  {
+    client: 'Social Media',
+    title: 'Confiabilidade que impulsiona',
+    description:
+      'Um social media na empresa é essencial para construir e manter uma presença online, aumentar a visibilidade da marca, gerenciar a reputação online, compreender o público-alvo e impulsionar o engajamento e a lealdade à marca, contribuindo para o crescimento dos negócios.',
+    logo: logo3,
+  },
+]
+
+function CardsInfo() {
   return (
     <>
       <SectionIntro
-        title="Harnessing technology for a brighter future"
+        title="Você estará sempre a frente!"
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          We believe technology is the answer to the world’s greatest
-          challenges. It’s also the cause, so we find ourselves in bit of a
-          catch 22 situation.
+          Potencialize seu negócio com a expertise de uma agência de marketing
+          dedicada a impulsionar marcas como a sua para o sucesso. Desde
+          estratégias personalizadas até campanhas criativas e resultados
+          mensuráveis, estamos aqui para tornar sua visão uma realidade. Não
+          deixe sua marca perdida na multidão. Junte-se a nós e destaque-se no
+          mercado!
         </p>
       </SectionIntro>
       <Container className="mt-16">
         <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {caseStudies.map((caseStudy) => (
-            <FadeIn key={caseStudy.href} className="flex">
+            <FadeIn key={caseStudy.client} className="flex">
               <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50 sm:p-8">
                 <h3>
-                  <Link href={caseStudy.href}>
+                  <span>
                     <span className="absolute inset-0 rounded-3xl" />
                     <Image
                       src={caseStudy.logo}
@@ -87,20 +116,8 @@ function CaseStudies({ caseStudies }) {
                       className="h-16 w-16"
                       unoptimized
                     />
-                  </Link>
-                </h3>
-                <p className="mt-6 flex gap-x-2 text-sm text-neutral-950">
-                  <time
-                    dateTime={caseStudy.date.split('-')[0]}
-                    className="font-semibold"
-                  >
-                    {caseStudy.date.split('-')[0]}
-                  </time>
-                  <span className="text-neutral-300" aria-hidden="true">
-                    /
                   </span>
-                  <span>Case study</span>
-                </p>
+                </h3>
                 <p className="mt-6 font-display text-2xl font-semibold text-neutral-950">
                   {caseStudy.title}
                 </p>
@@ -120,13 +137,14 @@ function Services() {
   return (
     <>
       <SectionIntro
-        eyebrow="Services"
-        title="We help you identify, explore and respond to new opportunities."
+        eyebrow="Serviços"
+        title="Nós te ajudamos a se destacar nas redes sociais, a expandir sua presença online e a conquistar novos clientes.
+        "
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          As long as those opportunities involve giving us money to re-purpose
-          old projects — we can come up with an endless number of those.
+          Descubra com a Andrômeda uma galáxia de possibilidades para
+          transformar sua marca e conquistar o universo digital!
         </p>
       </SectionIntro>
       <Container className="mt-16">
@@ -134,31 +152,40 @@ function Services() {
           <div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
             <FadeIn className="w-[33.75rem] flex-none lg:w-[45rem]">
               <StylizedImage
-                src={imageLaptop}
+                src={imageMobile}
                 sizes="(min-width: 1024px) 41rem, 31rem"
                 className="justify-center lg:justify-end"
               />
             </FadeIn>
           </div>
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
-            <ListItem title="Web development">
-              We specialise in crafting beautiful, high quality marketing pages.
-              The rest of the website will be a shell that uses lorem ipsum
-              everywhere.
+            <ListItem title="Design">
+              Nosso serviço de design é a chave para destacar sua marca. Com uma
+              abordagem criativa e focada no cliente, transformamos conceitos em
+              visualmente cativantes realidades. De logotipos a designs
+              digitais, fazemos todos os tipos de design para contar a história
+              da sua marca.
             </ListItem>
-            <ListItem title="Application development">
-              We have a team of skilled developers who are experts in the latest
-              app frameworks, like Angular 1 and Google Web Toolkit.
+            <ListItem
+              title="Trafego pago
+"
+            >
+              Nosso serviço de tráfego pago é a solução para impulsionar sua
+              presença online. Com estratégias especializadas em publicidade
+              digital, alcançamos seu público-alvo com eficiência, gerando
+              resultados tangíveis. Maximizamos seu retorno sobre o
+              investimento, direcionando tráfego qualificado para seu site ou
+              campanhas específicas.
             </ListItem>
-            <ListItem title="E-commerce">
-              We are at the forefront of modern e-commerce development. Which
-              mainly means adding your logo to the Shopify store template we’ve
-              used for the past six years.
-            </ListItem>
-            <ListItem title="Custom content management">
-              At Studio we understand the importance of having a robust and
-              customised CMS. That’s why we run all of our client projects out
-              of a single, enormous Joomla instance.
+            <ListItem
+              title="Social media
+"
+            >
+              Nosso serviço de social media é a chave para uma presença online
+              impactante. Com estratégias personalizadas, criamos conteúdo
+              envolvente, gerenciamos suas plataformas e cultivamos uma
+              comunidade fiel em torno da sua marca. Do planejamento à execução,
+              estamos aqui para impulsionar sua marca nas redes sociais.
             </ListItem>
           </List>
         </div>
@@ -172,40 +199,41 @@ export const metadata = {
     'We are a development studio working at the intersection of design and technology.',
 }
 
-export default async function Home() {
-  let caseStudies = (await loadCaseStudies()).slice(0, 3)
-
+export default function Home() {
   return (
     <>
       <Container className="mt-24 sm:mt-32 md:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Award-winning development studio based in Denmark.
+            Transforme sua visão em realidade. Imagine uma Galáxia de
+            possibilidades.
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
-            We are a development studio working at the intersection of design
-            and technology. It’s a really busy intersection though — a lot of
-            our staff have been involved in hit and runs.
+            Somos uma agência de marketing que opera na confluência entre
+            criatividade e inovação tecnológica. Nossa equipe está
+            constantemente mergulhada nesse dinâmico cruzamento, resultando em
+            soluções que não apenas captam a atenção, mas também deixam uma
+            marca duradoura.
           </p>
         </FadeIn>
       </Container>
 
       <Clients />
 
-      <CaseStudies caseStudies={caseStudies} />
+      <CardsInfo />
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
+        client={{ name: 'Wilian Rodrigues', logo: logoPhobiaDark }}
       >
-        The team at Studio went above and beyond with our onboarding, even
-        finding a way to access the user’s microphone without triggering one of
-        those annoying permission dialogs.
+        A agência de marketing superou nossas expectativas em todos os aspectos.
+        Com sua abordagem profissional, criativa e focada em resultados, eles
+        não apenas entenderam nossas necessidades, mas também as superaram.
+        Estamos muito satisfeitos com os resultados e recomendamos seus serviços
+        sem hesitação.
       </Testimonial>
 
       <Services />
-
-      <ContactSection />
     </>
   )
 }

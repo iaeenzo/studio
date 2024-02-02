@@ -1,13 +1,7 @@
 'use client'
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react'
+import { createContext, useEffect, useId, useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -17,9 +11,11 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Footer } from '@/components/Footer'
 import { GridPattern } from '@/components/GridPattern'
-import { Logo, Logomark } from '@/components/Logo'
-import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
+import logo from '@/images/logo.png'
+import localFont from 'next/font/local'
+
+const Ethnocentric = localFont({ src: '../fonts/Ethnocentric-Italic.otf' })
 
 const RootLayoutContext = createContext(null)
 
@@ -48,31 +44,38 @@ function Header({
   toggleRef,
   invert = false,
 }) {
-  let { logoHovered, setLogoHovered } = useContext(RootLayoutContext)
-
   return (
     <Container>
       <div className="flex items-center justify-between">
         <Link
+          className="flex items-center gap-x-2.5"
           href="/"
           aria-label="Home"
-          onMouseEnter={() => setLogoHovered(true)}
-          onMouseLeave={() => setLogoHovered(false)}
         >
-          <Logomark
-            className="h-8 sm:hidden"
-            invert={invert}
-            filled={logoHovered}
+          {/* remover fundo da imagem com css */}
+          <Image
+            className={clsx(
+              'mix-blend-multiply',
+              invert && 'mix-blend-exclusion invert',
+            )}
+            width={60}
+            height={60}
+            src={logo}
+            alt="logo"
           />
-          <Logo
-            className="hidden h-8 sm:block"
-            invert={invert}
-            filled={logoHovered}
-          />
+          <span
+            className={clsx(
+              'text-2xl',
+              Ethnocentric.className,
+              invert && 'text-white',
+            )}
+          >
+            andromeda
+          </span>
         </Link>
         <div className="flex items-center gap-x-8">
           <Button href="/contact" invert={invert}>
-            Contact us
+            Fale conosco
           </Button>
           <button
             ref={toggleRef}
@@ -127,12 +130,7 @@ function Navigation() {
   return (
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
-        <NavigationItem href="/work">Our Work</NavigationItem>
-        <NavigationItem href="/about">About Us</NavigationItem>
-      </NavigationRow>
-      <NavigationRow>
-        <NavigationItem href="/process">Our Process</NavigationItem>
-        <NavigationItem href="/blog">Blog</NavigationItem>
+        <NavigationItem href="/about">Sobre Nós</NavigationItem>
       </NavigationRow>
     </nav>
   )
@@ -213,16 +211,7 @@ function RootLayoutInner({ children }) {
             <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                  <div>
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Our offices
-                    </h2>
-                    <Offices
-                      invert
-                      className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
-                    />
-                  </div>
-                  <div className="sm:border-l sm:border-transparent sm:pl-16">
+                  <div className="sm:border-l sm:border-transparent">
                     <h2 className="font-display text-base font-semibold text-white">
                       Follow us
                     </h2>
