@@ -1,4 +1,4 @@
-import { SectionIntro } from '@/components/SectionIntro'
+import { SectionIntro } from '../../components/SectionIntro'
 
 function Culture() {
   return (

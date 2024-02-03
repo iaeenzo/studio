@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Container } from '@/components/Container'
-import { FadeIn } from '@/components/FadeIn'
-import { socialMediaProfiles } from '@/components/SocialMedia'
-import logo from '@/images/logo.png'
+import { Container } from './Container'
+import { FadeIn } from './FadeIn'
+import { socialMediaProfiles } from './SocialMedia'
+import logo from '../images/logo.png'
 
 const navigation = [
   {

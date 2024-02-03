@@ -7,12 +7,12 @@ import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { motion, MotionConfig, useReducedMotion } from 'framer-motion'
 
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { Footer } from '@/components/Footer'
-import { GridPattern } from '@/components/GridPattern'
-import { SocialMedia } from '@/components/SocialMedia'
-import logo from '@/images/logo.png'
+import { Button } from './Button'
+import { Container } from './Container'
+import { Footer } from './Footer'
+import { GridPattern } from './GridPattern'
+import { SocialMedia } from './SocialMedia'
+import logo from '../images/logo.png'
 import localFont from 'next/font/local'
 
 const Ethnocentric = localFont({ src: '../fonts/Ethnocentric-Italic.otf' })
@@ -213,7 +213,7 @@ function RootLayoutInner({ children }) {
                 <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
                   <div className="sm:border-l sm:border-transparent">
                     <h2 className="font-display text-base font-semibold text-white">
-                      Follow us
+                      Nos Acompanhe
                     </h2>
                     <SocialMedia className="mt-6" invert />
                   </div>
