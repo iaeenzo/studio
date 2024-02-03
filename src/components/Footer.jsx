@@ -8,14 +8,14 @@ import logo from '@/images/logo.png'
 
 const navigation = [
   {
-    title: 'Company',
+    title: 'Empresa',
     links: [
       { title: 'Sobre nós', href: '/about' },
       { title: 'Fale conosco', href: '/contact' },
     ],
   },
   {
-    title: 'Connect',
+    title: 'Nos Acompanhe',
     links: socialMediaProfiles,
   },
 ]

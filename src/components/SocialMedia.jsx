@@ -34,9 +34,21 @@ function TwitterIcon(props) {
 }
 
 export const socialMediaProfiles = [
-  { title: 'Facebook', href: 'https://facebook.com', icon: FacebookIcon },
-  { title: 'Instagram', href: 'https://instagram.com', icon: InstagramIcon },
-  { title: 'Twitter', href: 'https://twitter.com', icon: TwitterIcon },
+  {
+    title: 'Facebook',
+    href: 'https://facebook.com/andromedadesgin',
+    icon: FacebookIcon,
+  },
+  {
+    title: 'Instagram',
+    href: 'https://instagram.com/andromedadsgn',
+    icon: InstagramIcon,
+  },
+  {
+    title: 'Twitter',
+    href: 'https://twitter.com/andromedadesgin',
+    icon: TwitterIcon,
+  },
 ]
 
 export function SocialMedia({ className, invert = false }) {
