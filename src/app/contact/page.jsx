@@ -1,4 +1,6 @@
-import { useId } from 'react'
+'use client'
+
+import { useId, useState } from 'react'
 import Link from 'next/link'
 
 import { Border } from '../../components/Border'
@@ -31,19 +33,36 @@ function TextInput({ label, ...props }) {
 }
 
 function ContactForm() {
+  const [emailSent, setEmailSent] = useState(false)
+
+  function sendEmail(e) {
+    e.preventDefault()
+
+    let form = e.target
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Object.fromEntries(new FormData(form))),
+    })
+  }
+
   return (
     <FadeIn className="lg:order-last">
-      <form method="post" action="/api/contact">
+      <form onSubmit={sendEmail}>
         <h2 className="font-display text-base font-semibold text-neutral-950">
           Consulta de trabalhos
         </h2>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
-          <TextInput label="Nome" name="name" autoComplete="name" />
+          <TextInput label="Nome" name="name" autoComplete="name" required />
           <TextInput
             label="Email"
             type="email"
             name="email"
             autoComplete="email"
+            required
           />
           <TextInput
             label="Empresa"
@@ -55,11 +74,17 @@ function ContactForm() {
             type="tel"
             name="phone"
             autoComplete="tel"
+            required
           />
-          <TextInput label="Mensagem" name="message" />
+          <TextInput label="Mensagem" name="message" required />
         </div>
-        <Button type="submit" className="mt-10">
-          Vamos Tranalhar Juntos
+        <Button
+          type="submit"
+          className="mt-8"
+          disabled={emailSent}
+          onClick={() => setEmailSent(true)}
+        >
+          {emailSent ? 'email enviado' : 'vamos trabalhar juntos'}
         </Button>
       </form>
     </FadeIn>
@@ -108,12 +133,6 @@ function ContactDetails() {
       </Border>
     </FadeIn>
   )
-}
-
-export const metadata = {
-  title: 'Fale Conosco',
-  description:
-    'Vamos trabalhar juntos. Mal podemos esperar para ouvir de você.',
 }
 
 export default function Contact() {

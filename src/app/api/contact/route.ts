@@ -2,25 +2,21 @@ import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 export async function POST(request: Request) {
-  const data = await request.formData()
-  const name = data.get('name')
-  const company = data.get('company')
-  const email = data.get('email')
-  const message = data.get('message')
+  const { name, company, email, message } = await request.json()
 
   const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST as string,
-    port: process.env.EMAIL_PORT as unknown as number,
+    host: process.env.SMTP_HOST as string,
+    port: process.env.SMTP_PORT as unknown as number,
     secure: true,
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: process.env.SMTP_EMAIL,
+      pass: process.env.SMTP_PASSWORD,
     },
   })
 
   const mailOptions = {
     from: email.toString(),
-    to: process.env.EMAIL_USER,
+    to: process.env.SMTP_EMAIL,
     subject: `Nova mensagem de ${name.toString()} da empresa ${company.toString()}`,
     text: message.toString(),
   }
@@ -34,8 +30,11 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error(error)
     return new NextResponse(
-      JSON.stringify({ message: 'email failed to send' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } },
+      JSON.stringify({ message: "couldn't send email" }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
   }
 }

@@ -65,7 +65,7 @@ function Header({
           />
           <span
             className={clsx(
-              'text-2xl',
+              'hidden text-2xl sm:block',
               Ethnocentric.className,
               invert && 'text-white',
             )}
