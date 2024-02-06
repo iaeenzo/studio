@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { useId } from 'react'
 import Link from 'next/link'
 
 import { Border } from '../../components/Border'
@@ -33,8 +33,6 @@ function TextInput({ label, ...props }) {
 }
 
 function ContactForm() {
-  const [emailSent, setEmailSent] = useState(false)
-
   function sendEmail(e) {
     e.preventDefault()
 
@@ -78,13 +76,8 @@ function ContactForm() {
           />
           <TextInput label="Mensagem" name="message" required />
         </div>
-        <Button
-          type="submit"
-          className="mt-8"
-          disabled={emailSent}
-          onClick={() => setEmailSent(true)}
-        >
-          {emailSent ? 'email enviado' : 'vamos trabalhar juntos'}
+        <Button type="submit" className="mt-8">
+          vamos trabalhar juntos
         </Button>
       </form>
     </FadeIn>
