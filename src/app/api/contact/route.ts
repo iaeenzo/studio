@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 export async function POST(request: Request) {
-  const { name, company, email, message } = await request.json()
+  const { name, company, email, message, phone } = await request.json()
 
   const transporter = nodemailer.createTransport({
     host: String(process.env.SMTP_HOST),
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     from: email.toString(),
     to: process.env.SMTP_EMAIL,
     subject: `Nova mensagem de ${name.toString()} da empresa ${company.toString()}`,
-    text: message.toString(),
+    text: `Nome: ${name.toString()}\nEmpresa: ${company.toString()}\nEmail: ${email.toString()}\nTelefone: ${phone.toString()}\nMensagem: ${message.toString()}`,
   }
 
   try {
