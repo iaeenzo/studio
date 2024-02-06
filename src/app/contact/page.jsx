@@ -1,6 +1,6 @@
 'use client'
 
-import { useId } from 'react'
+import { useId, useState } from 'react'
 import Link from 'next/link'
 
 import { Border } from '../../components/Border'
@@ -33,6 +33,8 @@ function TextInput({ label, ...props }) {
 }
 
 function ContactForm() {
+  const [emailSent, setEmailSent] = useState(false)
+
   function sendEmail(e) {
     e.preventDefault()
 
@@ -45,6 +47,8 @@ function ContactForm() {
       },
       body: JSON.stringify(Object.fromEntries(new FormData(form))),
     })
+
+    setEmailSent(true)
   }
 
   return (
@@ -54,8 +58,15 @@ function ContactForm() {
           Consulta de trabalhos
         </h2>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
-          <TextInput label="Nome" name="name" autoComplete="name" required />
           <TextInput
+            disabled={emailSent}
+            label="Nome"
+            name="name"
+            autoComplete="name"
+            required
+          />
+          <TextInput
+            disabled={emailSent}
             label="Email"
             type="email"
             name="email"
@@ -63,21 +74,32 @@ function ContactForm() {
             required
           />
           <TextInput
+            disabled={emailSent}
             label="Empresa"
             name="company"
             autoComplete="organization"
           />
           <TextInput
+            disabled={emailSent}
             label="Telefone"
             type="tel"
             name="phone"
             autoComplete="tel"
             required
           />
-          <TextInput label="Mensagem" name="message" required />
+          <TextInput
+            disabled={emailSent}
+            label="Mensagem"
+            name="message"
+            required
+          />
         </div>
-        <Button type="submit" className="mt-8">
-          vamos trabalhar juntos
+        <Button
+          disabled={emailSent}
+          type="submit"
+          className="mt-8 disabled:cursor-not-allowed disabled:bg-neutral-300 disabled:text-neutral-950"
+        >
+          {emailSent ? 'email enviado com sucesso!' : 'vamos trabalhar juntos'}
         </Button>
       </form>
     </FadeIn>
