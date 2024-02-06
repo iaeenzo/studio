@@ -5,8 +5,8 @@ export async function POST(request: Request) {
   const { name, company, email, message } = await request.json()
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST as string,
-    port: process.env.SMTP_PORT as unknown as number,
+    host: String(process.env.SMTP_HOST),
+    port: Number(process.env.SMTP_PORT),
     secure: true,
     auth: {
       user: process.env.SMTP_EMAIL,
