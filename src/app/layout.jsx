@@ -4,8 +4,8 @@ import '../styles/tailwind.css'
 
 export const metadata = {
   title: {
-    template: '%s - Andromeda Design',
-    default: 'Andromeda Design - Agência de Design e Marketing Digital',
+    template: '%s - Inteligência',
+    default: 'Inteligência - Agência de Marketing Digital',
   },
 }
 

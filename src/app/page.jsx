@@ -59,7 +59,7 @@ function Clients() {
         <FadeInStagger faster>
           <div className="mt-16 flex w-full items-center justify-center gap-8">
             <a
-              href="https://wa.me/message/HUFRUR62PQUCJ1"
+              href="https://https://wa.me/5543933002591"
               className="flex items-center gap-2 rounded-full bg-white p-4 shadow-lg"
             >
               <WhatsappIcon />
@@ -155,7 +155,7 @@ function Services() {
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          Descubra com a Andrômeda uma galáxia de possibilidades para
+          Descubra com a Inteligência uma galáxia de possibilidades para
           transformar sua marca e conquistar o universo digital!
         </p>
       </SectionIntro>
@@ -217,8 +217,7 @@ export default function Home() {
       <Container className="mt-24 sm:mt-32 md:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Transforme sua visão em realidade. Imagine uma Galáxia de
-            possibilidades.
+            Transforme sua visão em realidade. Use do Marketing inteligente para converter seus leads em clientes.
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
             Somos uma agência de marketing que opera na confluência entre

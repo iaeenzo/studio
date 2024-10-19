@@ -60,7 +60,7 @@ export function Footer() {
             <Image src={logo} width={40} height={40} alt="logo" />
           </Link>
           <p className="text-sm text-neutral-700">
-            © Andromeda Design. {new Date().getFullYear()}
+            © Inteligência - Seu Marketing inteligente. {new Date().getFullYear()}
           </p>
         </div>
       </FadeIn>
